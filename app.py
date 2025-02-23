@@ -39,9 +39,10 @@ def display_dynasty_rankings():
 def team_view():
     nnf_rosters = get_league_rosters()
     TOWK = nnf_rosters.loc[nnf_rosters['NNF_Team'] == "The One Who Knocks"]
-    lateround = create_dynasty_dfs()
-    merged_nnf_lateround = pd.merge(TOWK, lateround,on='player_cleansed_name')
+    dynasty_df = create_dynasty_dfs()
+    merged_nnf_lateround = pd.merge(TOWK, dynasty_df,on='player_cleansed_name')
     TOWK_sorted = merged_nnf_lateround.sort_values(by=['Tier', "Positional Rank"], ascending=True)
+    TOWK_sorted.drop(columns=['player_cleansed_name', 'Player', 'Age', 'name','position', 'fantasycalcId', 'sleeperId', 'mflId'], inplace=True)
     table_html = TOWK_sorted.to_html(classes='table table-striped', index=False)
     return render_template('team.html', table_html=table_html)
     

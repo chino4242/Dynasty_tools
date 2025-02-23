@@ -59,4 +59,33 @@ def create_dynasty_dfs():
     relative_path = os.path.join(current_dir, 'data', '1QBRankings_February25.xlsx')
     late_round = pd.read_excel(relative_path)
     late_round = cleanse_names(late_round, 'Player')
-    return late_round
+    relative_path = os.path.join(current_dir, 'data', 'fantasycalc_dynasty_rankings.csv')
+    fantasy_calc = pd.read_csv(relative_path)
+    fantasy_calc = cleanse_names(fantasy_calc, 'name')
+    merged_dynasty = pd.merge(late_round, fantasy_calc,on='player_cleansed_name')
+    return merged_dynasty
+
+def print_by_team(teams, frame):
+    for nnf_team in teams:
+        team = frame.loc[frame["NNF_Team"] == nnf_team]
+        print(team)
+        columns = ['player_cleansed_name', 'Team_x', 'Pos_x', 'Age', 'Value', 'value', 'Buy/Sell/Hold', 'Harmon Tier', 'Harmon Rank','Seasonal Overall', 'Target']
+        team.sort_values(by=['value'], inplace=True, ascending=False)
+        players = team.player_cleansed_name.tolist()
+        print(nnf_team)
+        print("Likely Kept:")
+        print("-------------")
+        print(team[columns].head(10))
+        keeper_value = team['Value'].head(10).sum()
+        print(f"Value of Keepers: {keeper_value}")
+        print("Likely Dropped:")
+        print("----------------")
+        roster_count = team['player_cleansed_name'].count()
+        roster_max = 10
+        if roster_count > roster_max:
+            need_to_cut = roster_count - roster_max
+            print(team[columns].tail(need_to_cut))
+            dropped_value = team['Value'].tail(need_to_cut).sum()
+            print(f"Value of dropped: {dropped_value}")
+            team_value = team['Value'].sum()
+            print(f"Total Team Value for {nnf_team}: {team_value}")
