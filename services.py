@@ -1,5 +1,6 @@
-import pandas as pd
 import requests
+import pandas as pd
+import os
 
 nnf_team_ids = {
     "The One Who Knocks": {"name": "The One Who Knocks", "id": 1323356},
@@ -57,4 +58,5 @@ def create_dynasty_dfs():
     current_dir = os.path.dirname(__file__)
     relative_path = os.path.join(current_dir, 'data', '1QBRankings_February25.xlsx')
     late_round = pd.read_excel(relative_path)
-    late_round = cleanse_names(df_rosters, 'Player')
+    late_round = cleanse_names(late_round, 'Player')
+    return late_round

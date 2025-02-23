@@ -57,8 +57,6 @@ def home():
         df_rosters = pd.DataFrame(player_list, columns=['Name', 'Pos', 'NNF_Team'])
         return df_rosters
     
-    
-    
     #Convert DataFrame to HTML
     df_rosters = get_league_rosters()
     table_html = df_rosters.to_html(classes='table table-striped', index=False)
@@ -67,11 +65,9 @@ def home():
 
 @app.route('/jj')
 def display_dynasty_rankings():
-    current_dir = os.path.dirname(__file__)
-    relative_path = os.path.join(current_dir, 'data', '1QBRankings_February25.xlsx')
-    late_round = pd.read_excel(relative_path)
+    late_round = create_dynasty_dfs()
     table_html = late_round.to_html(classes='table table-striped', index=False)
     return render_template('index.html', table_html=table_html)     
-                        
+         
 if __name__ == '__main__':
     app.run(debug=True)
