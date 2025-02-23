@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynasty Tools</title>
+    <!--Bootstrap CSS-->
+    <link href=<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Hello, Flask!</h1>
+        <p>Welcome to your first Flask app with Bootstrap styling.</p>
+    </div>
+    <div class="container">
+        <h1>DataFrame Table</h1>
+        <!--Display the DataFrame table-->
+        {{table_html|safe}}
+    </div>
+<!--Bootstrap JS and Popper.JS-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
