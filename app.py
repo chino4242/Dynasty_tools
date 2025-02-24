@@ -38,12 +38,14 @@ def display_dynasty_rankings():
 @app.route('/team')
 def team_view():
     nnf_rosters = get_league_rosters()
-    TOWK = nnf_rosters.loc[nnf_rosters['NNF_Team'] == "The One Who Knocks"]
+    team_roster = nnf_rosters.loc[nnf_rosters['NNF_Team'] == "IYKYK"]
     dynasty_df = create_dynasty_dfs()
-    merged_nnf_lateround = pd.merge(TOWK, dynasty_df,on='player_cleansed_name')
-    TOWK_sorted = merged_nnf_lateround.sort_values(by=['Tier', "Positional Rank"], ascending=True)
-    TOWK_sorted.drop(columns=['player_cleansed_name', 'Player', 'Age', 'name','position', 'fantasycalcId', 'sleeperId', 'mflId'], inplace=True)
-    table_html = TOWK_sorted.to_html(classes='table table-striped', index=False)
+    merged_nnf_lateround = pd.merge(team_roster, dynasty_df,on='player_cleansed_name')
+    team_roster_sorted = merged_nnf_lateround.sort_values(by=['Tier', "Positional Rank"], ascending=True)
+    team_roster_sorted.drop(columns=['player_cleansed_name', 'Player', 'Age', 'name','position', 'fantasycalcId', 'sleeperId', 'mflId'], inplace=True)
+    table_html = team_roster_sorted.to_html(classes='table table-striped', index=False)
+    
+    
     return render_template('team.html', table_html=table_html)
     
     
