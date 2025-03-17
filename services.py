@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import os
 
+
 nnf_team_ids = {
     "The One Who Knocks": {"name": "The One Who Knocks", "id": 1323356},
     "Bomb Atomically 🏆🏆🏆": {"name": "Bomb Atomically 🏆🏆🏆", "id": 1323234},
@@ -19,6 +20,7 @@ nnf_teams = list(nnf_team_ids.keys())
 
 skill_positions = ["WR", "RB", "TE"]
 columns = ['full_name', 'Team', 'position', 'Age', 'Value']
+
 
 def cleanse_names(df, column):
     df['player_cleansed_name'] = df[column].str.replace(r'[^\w\s]+', '')
@@ -56,7 +58,7 @@ def get_league_rosters(league_id=197269, season=2024, scoring_period=18):
 
 def create_dynasty_dfs():
     current_dir = os.path.dirname(__file__)
-    relative_path = os.path.join(current_dir, 'data', '1QBRankings_February25.xlsx')
+    relative_path = os.path.join(current_dir, 'data', '1QBRankings_March25.xlsx')
     late_round = pd.read_excel(relative_path)
     late_round = cleanse_names(late_round, 'Player')
     relative_path = os.path.join(current_dir, 'data', 'fantasycalc_dynasty_rankings.csv')
@@ -89,3 +91,19 @@ def print_by_team(teams, frame):
             print(f"Value of dropped: {dropped_value}")
             team_value = team['Value'].sum()
             print(f"Total Team Value for {nnf_team}: {team_value}")
+            
+            
+def get_sleeper_roster(league_id):
+    url = f"https://api.sleeper.app/v1/league/{league_id}/rosters"
+    
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        print("API data fetched successfully!")
+        print(data)
+    else:
+        data = None
+        print("Failed to fetch data. Status code: {response.status_code}")
+
+    return data

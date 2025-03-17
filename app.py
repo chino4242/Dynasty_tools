@@ -3,7 +3,6 @@ import requests
 import pandas as pd
 from services import *
 import os
-from sleeper.api import (get_league, get_rosters)
 
 app = Flask(__name__)
 
@@ -28,27 +27,31 @@ def home():
     df_rosters = get_league_rosters()
     table_html = df_rosters.to_html(classes='table table-striped', index=False)
     
-    return render_template('index.html', table_html=table_html)              
+    return render_template('index.html', table_html=table_html, title='home')              
 
 @app.route('/jj')
 def display_dynasty_rankings():
     late_round = create_dynasty_dfs()
     table_html = late_round.to_html(classes='table table-striped', index=False)
-    return render_template('jj.html', table_html=table_html)     
+    return render_template('jj.html', table_html=table_html, title='jj')     
 
 @app.route('/team')
 def team_view():
     nnf_rosters = get_league_rosters()
-    team_roster = nnf_rosters.loc[nnf_rosters['NNF_Team'] == "IYKYK"]
+    team_roster = nnf_rosters.loc[nnf_rosters['NNF_Team'] == "The One Who Knocks"]
     dynasty_df = create_dynasty_dfs()
     merged_nnf_lateround = pd.merge(team_roster, dynasty_df,on='player_cleansed_name')
     team_roster_sorted = merged_nnf_lateround.sort_values(by=['Tier', "Positional Rank"], ascending=True)
     team_roster_sorted.drop(columns=['player_cleansed_name', 'Player', 'Age', 'name','position', 'fantasycalcId', 'sleeperId', 'mflId'], inplace=True)
     table_html = team_roster_sorted.to_html(classes='table table-striped', index=False)
-    
-    
-    return render_template('team.html', table_html=table_html)
-    
+        
+    return render_template('team.html', table_html=table_html, title='team')
+
+@app.route('/sleeper')
+def sleeper_view():
+    data = get_sleeper_roster(1200992049558454272)
+    return render_template('sleeper.html', table_html=data, title='sleeper')
+
     
 if __name__ == '__main__':
     app.run(debug=True)
