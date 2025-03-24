@@ -9,3 +9,34 @@ body {
 .table {
     text-align: center;
 }
+
+.dataframe {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .dataframe th, .dataframe td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: right;
+  }
+
+  .dataframe th {
+    background-color: #f2f2f2;
+  }
+
+  .positive {
+    background-color: #c6efce; /* Light green */
+  }
+
+  .negative {
+    background-color: #f8cbc0; /* Light red */
+  }
+
+  .neutral {
+      background-color: lightyellow;
+  }
+
+  .highlight {
+    font-weight: bold;
+  }

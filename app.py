@@ -45,7 +45,7 @@ def team_view():
     team_roster_sorted.drop(columns=['player_cleansed_name', 'Player', 'Age', 'name','position', 'fantasycalcId', 'sleeperId', 'mflId'], inplace=True)
     table_html = team_roster_sorted.to_html(classes='table table-striped', index=False)
         
-    return render_template('team.html', table_html=table_html, title='team')
+    return render_template('team.html', table_html=table_html, title='team', table_id='team')
 
 @app.route('/sleeper')
 def sleeper_view():
