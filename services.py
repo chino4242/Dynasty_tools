@@ -67,6 +67,44 @@ def create_dynasty_dfs():
     merged_dynasty = pd.merge(late_round, fantasy_calc,on='player_cleansed_name')
     return merged_dynasty
 
+def create_rookie_rankings():
+    current_dir = os.path.dirname(__file__)
+    relative_path = os.path.join(current_dir, 'data', '1QB_Predraft_Rookies.xlsx')
+    prospect_guide = pd.read_excel(relative_path)
+    prospect_guide = cleanse_names(prospect_guide, 'Player')
+    relative_path = os.path.join(current_dir, 'data', 'fantasycalc_dynasty_rookie_rankings.csv')
+    fantasy_calc = pd.read_csv(relative_path)
+    fantasy_calc = cleanse_names(fantasy_calc, 'name')
+    relative_path = os.path.join(current_dir, 'data', 'Reception_Perception_Rookies.xlsx')
+    reception_perception = pd.read_excel(relative_path)
+    reception_perception = cleanse_names(reception_perception, 'Player')
+    merged_rookies = pd.merge(prospect_guide, reception_perception, on='player_cleansed_name', how='outer')
+    merged_rookies = pd.merge(merged_rookies, fantasy_calc, on='player_cleansed_name', how='outer')
+    columns = ['Rk',
+               'player_cleansed_name',
+               'position',
+               'Pos. Rank',
+               'Tier',
+               'ZAP Score',
+               'Category',
+               'Comparables',
+               'Height',
+               'Weight',
+               'Notes',
+               'Summarized Notes',
+               'Stylistic Comp',
+                '% of Man Routes',
+                '% of Zone Routes',
+                '% of Press Routes',
+                '% of Double Routes',
+                'value',
+                'overallRank',
+                'positionRank',
+                'trend30day'
+    ]
+    merged_rookies = merged_rookies[columns]
+    return merged_rookies
+
 def print_by_team(teams, frame):
     for nnf_team in teams:
         team = frame.loc[frame["NNF_Team"] == nnf_team]
