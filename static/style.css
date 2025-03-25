@@ -6,6 +6,11 @@ body {
     background-color: rgb(181, 181, 181);
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
 .table {
     text-align: center;
 }
@@ -45,4 +50,8 @@ body {
     text-decoration: line-through;
     background-color: black;
     color: white;
+  }
+  .filter-row input {
+    width: 100%;
+    box-sizing: border-box;
   }
