@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
             cells.forEach(function(cell) {
                 if(this.checked) {
-                    cell.classList.add('strikethrough');
+                    cell.classList.add('selected');
                 } else {
-                    cell.classList.remove('strikethrough');
+                    cell.classList.remove('selected');
                 }
             }, this);
         });

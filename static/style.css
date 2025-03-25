@@ -41,6 +41,8 @@ body {
     font-weight: bold;
   }
 
-  .strikethrough {
+  .selected {
     text-decoration: line-through;
+    background-color: black;
+    color: white;
   }
