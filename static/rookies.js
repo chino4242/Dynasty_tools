@@ -3,6 +3,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const headers = table.querySelectorAll('th');
     let filterInputs;
 
+    // Add Checkboxes functionality (working correctly)
+    function addCheckBoxes() {
+        const table = document.querySelector('table');
+        if (!table) return;
+
+        const headerRow = table.querySelector('thead tr');
+        if (headerRow) {
+            const th = document.createElement('th');
+            th.textContent = 'Select';
+            headerRow.insertBefore(th, headerRow.firstChild);
+        }
+
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            const td = document.createElement('td');
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            td.appendChild(checkbox);
+            row.insertBefore(td, row.firstChild);
+        });
+    }
+
+    addCheckBoxes(); // Call addCheckBoxes before adding listeners
+
     // Checkbox functionality (working correctly)
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(function(checkbox) {
@@ -29,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cellA = rowA.querySelectorAll('td')[columnIndex].textContent.trim();
             const cellB = rowB.querySelectorAll('td')[columnIndex].textContent.trim();
 
-            if (isNaN(cellA) || isNaN(cellB)) { // Corrected isNan to isNaN
+            if (isNaN(cellA) || isNaN(cellB)) {
                 return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
             } else {
                 return isAscending ? cellA - cellB : cellB - cellA;
@@ -37,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         table.querySelector('tbody').innerHTML = '';
-        rows.forEach(row => table.querySelector('tbody').appendChild(row)); // Corrected appendChild
+        rows.forEach(row => table.querySelector('tbody').appendChild(row));
 
         headers.forEach(header => header.classList.remove('asc', 'desc'));
         headers[columnIndex].classList.add(isAscending ? 'desc' : 'asc');
@@ -49,30 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
             sortTable(index);
         });
     });
-
-    // Add Checkboxes functionality (working correctly)
-    function addCheckBoxes() {
-        const table = document.querySelector('table');
-        if (!table) return;
-
-        const headerRow = table.querySelector('thead tr');
-        if (headerRow) {
-            const th = document.createElement('th');
-            th.textContent = 'Select';
-            headerRow.insertBefore(th, headerRow.firstChild);
-        }
-
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-            const td = document.createElement('td');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            td.appendChild(checkbox);
-            row.insertBefore(td, row.firstChild);
-        });
-    }
-
-    addCheckBoxes();
 
     // Add Filter Row functionality (working correctly)
     function addFilterRow() {
