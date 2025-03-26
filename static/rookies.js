@@ -102,6 +102,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     positionRanking.classList.add('top-twenty');
                 }
             }
+            const playerName = cells[2];
+            const position = cells[3];
+            switch (position.textContent) {
+                case "QB":
+                    playerName.classList.add('qb');
+                    break;
+                case "RB":
+                    playerName.classList.add('rb');
+                    break;
+                case "WR":
+                    playerName.classList.add('wr');
+                    break;
+                case "TE":
+                    playerName.classList.add('te');
+                    break;
+            }
         
     }
 }

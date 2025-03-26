@@ -95,3 +95,19 @@ table {
     width: 100%;
     box-sizing: border-box;
   }
+
+  .qb {
+    background-color: #9DE89F;
+  }
+
+  .wr {
+    background-color: #9BF6FF;
+  }
+
+  .rb {
+    background-color: #FFADAD;
+  }
+
+  .te {
+    background-color: #FFD6A5;
+  }
