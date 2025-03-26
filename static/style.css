@@ -30,8 +30,14 @@ table {
     background-color: #f2f2f2;
   }
 
+  .elite {
+    background-color: green;
+    font-weight: bold;
+  }
+
   .positive {
     background-color: #c6efce; /* Light green */
+    font-weight: bold;
   }
 
   .negative {

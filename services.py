@@ -88,6 +88,7 @@ def create_rookie_rankings():
                'ZAP Score',
                'Category',
                'Comparables',
+               'value',
                'Height',
                'Weight',
                'Notes',
@@ -97,7 +98,6 @@ def create_rookie_rankings():
                 '% of Zone Routes',
                 '% of Press Routes',
                 '% of Double Routes',
-                'value',
                 'overallRank',
                 'positionRank',
                 'trend30day'

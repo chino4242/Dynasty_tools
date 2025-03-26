@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const table = document.querySelector('table');
     const headers = table.querySelectorAll('th');
+    const rows = table.querySelectorAll('tbody tr');
     let filterInputs;
 
     // Add Checkboxes functionality (working correctly)
@@ -74,6 +75,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    function addFormatting() {
+        for (let i = 1; i < rows.length; i++) { //start at 1 to skip header row
+            const cells = rows[i].getElementsByTagName('td');
+            
+            // Format for producer group
+            const categoryCell = cells[7]; // assuming the producer group is in the 7th column (index 6)
+            console.log(categoryCell)
+            if (categoryCell.textContent.trim().toLowerCase() === "elite producer") {
+                categoryCell.classList.add('elite');
+            } else if (categoryCell.textContent.trim().toLowerCase() === "weekly starter"){
+                categoryCell.classList.add('positive');
+            } else if (categoryCell.textContent.trim().toLowerCase() === "flex play") {
+                categoryCell.classList.add('neutral');
+            }
+    }
+}
+    
     // Add Filter Row functionality (working correctly)
     function addFilterRow() {
         const headerRow = table.querySelector('thead tr');
@@ -96,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    addFilterRow();
+    
 
     // Filter Table functionality (working correctly)
     function filterTable(columnIndex, filterValue) {
@@ -114,4 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    addFilterRow();
+    addFormatting();
 });
