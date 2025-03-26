@@ -76,19 +76,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function addFormatting() {
-        for (let i = 1; i < rows.length; i++) { //start at 1 to skip header row
+        for (let i = 0; i < rows.length; i++) { //start at 1 to skip header row
             const cells = rows[i].getElementsByTagName('td');
             
             // Format for producer group
             const categoryCell = cells[7]; // assuming the producer group is in the 7th column (index 6)
-            console.log(categoryCell)
             if (categoryCell.textContent.trim().toLowerCase() === "elite producer") {
                 categoryCell.classList.add('elite');
             } else if (categoryCell.textContent.trim().toLowerCase() === "weekly starter"){
                 categoryCell.classList.add('positive');
             } else if (categoryCell.textContent.trim().toLowerCase() === "flex play") {
                 categoryCell.classList.add('neutral');
+            } else if (categoryCell.textContent.trim().toLowerCase() === "benchwarmer") {
+                categoryCell.classList.add('negative');
             }
+            
+            const positionRanking = cells[9];
+            if (positionRanking) {
+                const positionRankingCell = parseInt(positionRanking.textContent);
+                if (positionRankingCell <= 5) {
+                    positionRanking.classList.add('top-five');
+                } else if (positionRankingCell >= 6 && positionRankingCell <= 10) {
+                    positionRanking.classList.add('top-ten');
+                } else if (positionRankingCell >= 11 && positionRankingCell <= 20) {
+                    positionRanking.classList.add('top-twenty');
+                }
+            }
+        
     }
 }
     

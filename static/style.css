@@ -6,6 +6,26 @@ body {
     background-color: rgb(181, 181, 181);
 }
 
+#rookies th {
+  position: sticky;
+  top: 0; /* Stick to the top of the viewport */
+  background-color: #f2f2f2; /* Optional: Keep the header background */
+  z-index: 1; /* Ensure the header is above other content */
+}
+
+/* if there is a filter row */
+#rookies .filter-row th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+#rookies thead th {
+  position: sticky;
+  top: 30px; /* or whatever height the filter row is */
+  z-index: 1;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -52,6 +72,20 @@ table {
     font-weight: bold;
   }
 
+  .top-five {
+    background-color: gold;
+    font-weight: bold;
+  }
+
+  .top-ten {
+    background-color: rgb(0, 185, 37);
+    font-weight: bold;
+  }
+
+  .top-twenty {
+    background-color: rgb(130, 111, 8);
+    font-weight: bold;
+  }
   .selected {
     text-decoration: line-through;
     background-color: black;

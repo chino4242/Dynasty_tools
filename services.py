@@ -88,6 +88,7 @@ def create_rookie_rankings():
                'ZAP Score',
                'Category',
                'Comparables',
+               'positionRank',
                'value',
                'Height',
                'Weight',
@@ -99,7 +100,6 @@ def create_rookie_rankings():
                 '% of Press Routes',
                 '% of Double Routes',
                 'overallRank',
-                'positionRank',
                 'trend30day'
     ]
     merged_rookies = merged_rookies[columns]
