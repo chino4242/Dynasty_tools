@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryCell.classList.add('negative');
             }
             
-            const positionRanking = cells[9];
+/*             const positionRanking = cells[9];
             if (positionRanking) {
                 const positionRankingCell = parseInt(positionRanking.textContent);
                 if (positionRankingCell <= 5) {
@@ -102,6 +102,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     positionRanking.classList.add('top-twenty');
                 }
             }
+ */
+            const value = cells[10];
+            if (value) {
+                const valueCell = parseInt(value.textContent);
+                if(valueCell >= 7000) {
+                    value.classList.add('top-five');
+                } else if (valueCell >= 4000 && valueCell <=6999){
+                    value.classList.add('elite');
+                } else if (valueCell >= 3000 && valueCell <=3999) {
+                    value.classList.add('positive');
+                } else if (valueCell >= 1000 && valueCell <=2999) {
+                    value.classList.add('neutral');
+                }
+            }
+
             const playerName = cells[2];
             const position = cells[3];
             switch (position.textContent) {
