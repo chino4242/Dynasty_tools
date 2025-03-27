@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryCell.classList.add('negative');
             }
             
-/*             const positionRanking = cells[9];
+             const positionRanking = cells[9];
             if (positionRanking) {
                 const positionRankingCell = parseInt(positionRanking.textContent);
                 if (positionRankingCell <= 5) {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     positionRanking.classList.add('top-twenty');
                 }
             }
- */
+
             const value = cells[10];
             if (value) {
                 const valueCell = parseInt(value.textContent);
