@@ -4,7 +4,7 @@ function applyConditionalFormatting() {
 
     for (let i =1; i < rows.length; i++) {
         const cells = rows[i].getElementsByTagName('td');
-        const trendCell = cells[12];
+        const trendCell = cells[13];
 
         if (trendCell) {
             const trendValue = parseInt(trendCell.textContent);
@@ -17,7 +17,7 @@ function applyConditionalFormatting() {
                 trendCell.classList.add('neutral');
             }
         }
-        const positionalRankCell = cells[5]; // overallRank column
+        const positionalRankCell = cells[3]; // overallRank column
         const positionCell = cells[1];
 
         if (positionalRankCell){
@@ -31,7 +31,21 @@ function applyConditionalFormatting() {
             }    
             }
         }
-  
+        const buyCell = cells[7];
+            switch (buyCell.textContent) {
+                case "Super Buy":
+                    buyCell.classList.add('super-buy');
+                    break;
+                case "Buy":
+                    buyCell.classList.add('positive');
+                    break;
+                case "Hold":
+                    buyCell.classList.add('neutral');
+                    break;
+                case "Sell":
+                    buyCell.classList.add('negative');
+                    break;
+            }
       }
     }
   

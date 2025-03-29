@@ -6,7 +6,7 @@ body {
     background-color: rgb(181, 181, 181);
 }
 
-#rookies th {
+#rookies, #team th {
   position: sticky;
   top: 0; /* Stick to the top of the viewport */
   background-color: #f2f2f2; /* Optional: Keep the header background */
@@ -111,3 +111,9 @@ table {
   .te {
     background-color: #FFD6A5;
   }
+
+  .super-buy {
+    background-color: gold;
+    font-weight: bold;
+  }
+

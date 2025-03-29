@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function addFormatting() {
-        for (let i = 0; i < rows.length; i++) { //start at 1 to skip header row
+        for (let i = 0; i < rows.length; i++) { 
             const cells = rows[i].getElementsByTagName('td');
             
             // Format for producer group

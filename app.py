@@ -48,7 +48,24 @@ def team_view():
     dynasty_df = create_dynasty_dfs()
     merged_nnf_lateround = pd.merge(team_roster, dynasty_df,on='player_cleansed_name')
     team_roster_sorted = merged_nnf_lateround.sort_values(by=['Tier', "Positional Rank"], ascending=True)
-    team_roster_sorted.drop(columns=['player_cleansed_name', 'Player', 'Age', 'name','position', 'fantasycalcId', 'sleeperId', 'mflId'], inplace=True)
+    columns = [
+        'Name',
+        'Position',
+        'Overall',
+        'Positional Rank',
+        'Tier',
+        'Rank_Harmon',
+        'Tier_Harmon',
+        'Buy/Sell/Hold',
+        'team',
+        'age',
+        'value',
+        'overallRank',
+        'positionRank',
+        'trend30day',
+        'Notes'
+    ]
+    team_roster_sorted = team_roster_sorted[columns]
     table_html = team_roster_sorted.to_html(classes='table table-striped', index=False)
         
     return render_template('team.html', table_html=table_html, title='team', table_id='team')

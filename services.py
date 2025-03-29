@@ -65,6 +65,10 @@ def create_dynasty_dfs():
     fantasy_calc = pd.read_csv(relative_path)
     fantasy_calc = cleanse_names(fantasy_calc, 'name')
     merged_dynasty = pd.merge(late_round, fantasy_calc,on='player_cleansed_name')
+    relative_path = os.path.join(current_dir, 'data', 'Reception_Perception_Dynasty.xlsx')
+    reception_perception = pd.read_excel(relative_path)
+    reception_perception = cleanse_names(reception_perception, 'Player_Harmon')
+    merged_dynasty = pd.merge(merged_dynasty, reception_perception, on='player_cleansed_name', how='outer')
     return merged_dynasty
 
 def create_rookie_rankings():
