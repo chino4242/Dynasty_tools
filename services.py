@@ -83,28 +83,40 @@ def create_rookie_rankings():
     reception_perception = pd.read_excel(relative_path)
     reception_perception = cleanse_names(reception_perception, 'Player')
     merged_rookies = pd.merge(prospect_guide, reception_perception, on='player_cleansed_name', how='outer')
+    relative_path = os.path.join(current_dir, 'data', 'RSP_Rookies.xlsx')
+    rsp_rookies = pd.read_excel(relative_path)
+    rsp_rookies = cleanse_names(rsp_rookies, 'Player')
+    merged_rookies = pd.merge(merged_rookies, rsp_rookies, on='player_cleansed_name', how='outer')
     merged_rookies = pd.merge(merged_rookies, fantasy_calc, on='player_cleansed_name', how='outer')
     columns = ['Rk',
                'player_cleansed_name',
                'position',
                'Pos. Rank',
+               'RSP Pos. Ranking',
                'Tier',
                'ZAP Score',
+               'Depth of Talent Score',
                'Category',
+               'Depth of Talent Description',
                'Comparables',
+               'Comparison Spectrum',
                'positionRank',
+               'Stylistic Comp',
                'value',
                'Height',
                'Weight',
+               'School',
                'Notes',
                'Summarized Notes',
-               'Stylistic Comp',
+               'RSP Notes',
                 '% of Man Routes',
                 '% of Zone Routes',
                 '% of Press Routes',
                 '% of Double Routes',
                 'overallRank',
                 'trend30day'
+
+
     ]
     merged_rookies = merged_rookies[columns]
     return merged_rookies

@@ -117,3 +117,26 @@ table {
     font-weight: bold;
   }
 
+.rare {
+  background-color: gold;
+}
+
+.franchise {
+  background-color: gold;
+}
+
+.starter {
+  background-color: green;
+}
+
+.rotational_starter {
+  background-color: #c6efce;
+}
+
+.contributor {
+  background-color: lightyellow;
+}
+
+.reserve {
+  background-color:  #f8cbc0;
+}

@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cells = rows[i].getElementsByTagName('td');
             
             // Format for producer group
-            const categoryCell = cells[7]; // assuming the producer group is in the 7th column (index 6)
+            const categoryCell = cells[9]; // assuming the producer group is in the 7th column (index 6)
             if (categoryCell.textContent.trim().toLowerCase() === "elite producer") {
                 categoryCell.classList.add('elite');
             } else if (categoryCell.textContent.trim().toLowerCase() === "weekly starter"){
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryCell.classList.add('negative');
             }
             
-             const positionRanking = cells[9];
+             const positionRanking = cells[13];
             if (positionRanking) {
                 const positionRankingCell = parseInt(positionRanking.textContent);
                 if (positionRankingCell <= 5) {
@@ -99,11 +99,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (positionRankingCell >= 6 && positionRankingCell <= 10) {
                     positionRanking.classList.add('top-ten');
                 } else if (positionRankingCell >= 11 && positionRankingCell <= 20) {
-                    positionRanking.classList.add('top-twenty');
+                    positionRanking.classList.add('positive');
                 }
             }
 
-            const value = cells[10];
+            const value = cells[15];
             if (value) {
                 const valueCell = parseInt(value.textContent);
                 if(valueCell >= 7000) {
@@ -132,6 +132,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 case "TE":
                     playerName.classList.add('te');
                     break;
+            }
+
+            const depthOfTalent = cells[8];
+            if (depthOfTalent) {
+                const dOTCell = parseInt(depthOfTalent.textContent);
+                if(dOTCell >= 95) {
+                    depthOfTalent.classList.add('rare');
+                } else if (dOTCell >= 90 && dOTCell <=94){
+                    depthOfTalent.classList.add('franchise');
+                } else if (dOTCell >= 85 && dOTCell <=89) {
+                    depthOfTalent.classList.add('starter');
+                } else if (dOTCell >= 80 && dOTCell <=84) {
+                    depthOfTalent.classList.add('rotational_starter');
+                } else if (dOTCell >= 75 && dOTCell <=79) {
+                    depthOfTalent.classList.add('contributor');
+                } else if (dOTCell >=70 && dOTCell <= 74) {
+                    depthOfTalent.classList.add('reserve');
+                }
             }
         
     }
