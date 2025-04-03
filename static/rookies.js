@@ -2,8 +2,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const table = document.querySelector('table');
     const headers = table.querySelectorAll('th');
     const rows = table.querySelectorAll('tbody tr');
+    const showDataButtons = document.querySelectorAll('.showDataBtn');
+    const modal=document.getElementById('dataModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalButton = document.getElementById('closeModalBtn');
     let filterInputs;
 
+    showDataButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const cellData = this.dataset.cellData;
+            modalContent.textContent = cellData;
+            modal.showModal();
+        });
+    });
+
+    closeModalButton.addEventListener('click', function(){
+        modal.close();
+    });
     // Add Checkboxes functionality (working correctly)
     function addCheckBoxes() {
         const table = document.querySelector('table');

@@ -161,3 +161,6 @@ def get_sleeper_roster(league_id):
         print("Failed to fetch data. Status code: {response.status_code}")
 
     return data
+
+def create_button(cell_value):
+    return f'<button class="showDataBtn" data-cell-data="{cell_value}">Show Analysis</button>'
