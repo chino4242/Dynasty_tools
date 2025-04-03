@@ -77,7 +77,7 @@ def create_rookie_rankings():
     prospect_guide = pd.read_excel(relative_path)
     prospect_guide = cleanse_names(prospect_guide, 'Player')
     relative_path = os.path.join(current_dir, 'data', 'fantasycalc_dynasty_rookie_rankings.csv')
-    fantasy_calc = pd.read_csv(relative_path)
+    fantasy_calc = pd.read_csv(relative_path, delimiter=';')
     fantasy_calc = cleanse_names(fantasy_calc, 'name')
     relative_path = os.path.join(current_dir, 'data', 'Reception_Perception_Rookies.xlsx')
     reception_perception = pd.read_excel(relative_path)
