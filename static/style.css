@@ -13,19 +13,6 @@ body {
   z-index: 1; /* Ensure the header is above other content */
 }
 
-/* if there is a filter row */
-#rookies .filter-row th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-
-#rookies thead th {
-  position: sticky;
-  top: 30px; /* or whatever height the filter row is */
-  z-index: 1;
-}
-
 table {
   border-collapse: collapse;
   width: 100%;
