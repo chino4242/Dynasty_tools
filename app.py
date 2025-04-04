@@ -38,8 +38,8 @@ def display_dynasty_rankings():
 @app.route('/rookies')
 def display_rookie_rankings():
     rookies = create_rookie_rankings()
-    table_html = rookies.to_html(formatters={'RSP Notes': create_button, 'Summarized Notes':create_button, 'Notes':create_button}, escape=False, classes='table table-striped', index=False)
-    return render_template('rookies.html', table_html=table_html, title='rookies', table_id='rookies')
+    table_html = rookies.to_html(formatters={'RSP Notes': create_button, 'Summarized Notes':create_button, 'Notes':create_button}, escape=False, classes='table table-striped', index=False, table_id='rookieTable')
+    return render_template('rookies.html', table_html=table_html, title='rookies', table_id='rookieTable')
 
 @app.route('/team')
 def team_view():

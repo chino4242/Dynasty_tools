@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal=document.getElementById('dataModal');
     const modalContent = document.getElementById('modalContent');
     const closeModalButton = document.getElementById('closeModalBtn');
-    let filterInputs;
 
     showDataButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -57,36 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     cell.classList.remove('selected');
                 }
             }, this);
-        });
-    });
-
-    // Sort Table functionality (corrected)
-    function sortTable(columnIndex) {
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-        const isAscending = headers[columnIndex].classList.contains('asc');
-
-        rows.sort((rowA, rowB) => {
-            const cellA = rowA.querySelectorAll('td')[columnIndex].textContent.trim();
-            const cellB = rowB.querySelectorAll('td')[columnIndex].textContent.trim();
-
-            if (isNaN(cellA) || isNaN(cellB)) {
-                return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
-            } else {
-                return isAscending ? cellA - cellB : cellB - cellA;
-            }
-        });
-
-        table.querySelector('tbody').innerHTML = '';
-        rows.forEach(row => table.querySelector('tbody').appendChild(row));
-
-        headers.forEach(header => header.classList.remove('asc', 'desc'));
-        headers[columnIndex].classList.add(isAscending ? 'desc' : 'asc');
-    }
-
-    // Add event listeners for sorting (moved to the correct place)
-    headers.forEach((header, index) => {
-        header.addEventListener('click', () => {
-            sortTable(index);
         });
     });
 
@@ -181,47 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
     }
 }
-    
-    // Add Filter Row functionality (working correctly)
-    function addFilterRow() {
-        const headerRow = table.querySelector('thead tr');
-        const filterRow = document.createElement('tr');
-        filterRow.classList.add('filter-row');
 
-        headers.forEach(() => {
-            const filterCell = document.createElement('th');
-            const filterInput = document.createElement('input');
-            filterInput.type = 'text';
-            filterCell.appendChild(filterInput);
-            filterRow.appendChild(filterCell);
-        });
-
-        table.querySelector('thead').appendChild(filterRow);
-        filterInputs = filterRow.querySelectorAll('input');
-
-        filterInputs.forEach((input, index) => {
-            input.addEventListener('input', () => filterTable(index, input.value));
-        });
-    }
-
-    
-
-    // Filter Table functionality (working correctly)
-    function filterTable(columnIndex, filterValue) {
-        const rows = Array.from(table.querySelectorAll('tbody tr'));
-        rows.forEach(row => {
-            const cell = row.querySelectorAll('td')[columnIndex];
-            if (cell) {
-                const cellText = cell.textContent.toLowerCase();
-                const filterText = filterValue.toLowerCase();
-                if (cellText.includes(filterText)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            }
-        });
-    }
-    addFilterRow();
     addFormatting();
 });
