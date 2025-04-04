@@ -93,6 +93,7 @@ def create_rookie_rankings():
                'position',
                'Pos. Rank',
                'RSP Pos. Ranking',
+               'RSP 2023-2025 Rank',
                'Tier',
                'ZAP Score',
                'Depth of Talent Score',

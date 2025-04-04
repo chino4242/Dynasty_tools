@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cells = rows[i].getElementsByTagName('td');
             
             // Format for producer group
-            const categoryCell = cells[9]; // assuming the producer group is in the 7th column (index 6)
+            const categoryCell = cells[10]; // assuming the producer group is in the 7th column (index 6)
             if (categoryCell.textContent.trim().toLowerCase() === "elite producer") {
                 categoryCell.classList.add('elite');
             } else if (categoryCell.textContent.trim().toLowerCase() === "weekly starter"){
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryCell.classList.add('negative');
             }
             
-             const positionRanking = cells[13];
+             const positionRanking = cells[14];
             if (positionRanking) {
                 const positionRankingCell = parseInt(positionRanking.textContent);
                 if (positionRankingCell <= 5) {
@@ -118,7 +118,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            const value = cells[15];
+            const rspPositionRanking = cells[6];
+            if (rspPositionRanking) {
+                const rspPositionRankingCell = parseInt(rspPositionRanking.textContent);
+                if (rspPositionRankingCell <= 5) {
+                    rspPositionRanking.classList.add('top-five');
+                } else if (rspPositionRankingCell >= 6 && rspPositionRankingCell <= 10) {
+                    rspPositionRanking.classList.add('top-ten');
+                } else if (rspPositionRankingCell >= 11 && rspPositionRankingCell <= 20) {
+                    rspPositionRanking.classList.add('positive');
+                }
+            }
+
+            const value = cells[16];
             if (value) {
                 const valueCell = parseInt(value.textContent);
                 if(valueCell >= 7000) {
@@ -149,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
 
-            const depthOfTalent = cells[8];
+            const depthOfTalent = cells[9];
             if (depthOfTalent) {
                 const dOTCell = parseInt(depthOfTalent.textContent);
                 if(dOTCell >= 95) {
