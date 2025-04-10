@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cells = rows[i].getElementsByTagName('td');
             
             // Format for producer group
-            const categoryCell = cells[10]; // assuming the producer group is in the 7th column (index 6)
+            const categoryCell = cells[11]; // assuming the producer group is in the 7th column (index 6)
             if (categoryCell.textContent.trim().toLowerCase() === "elite producer") {
                 categoryCell.classList.add('elite');
             } else if (categoryCell.textContent.trim().toLowerCase() === "weekly starter"){
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryCell.classList.add('negative');
             }
             
-             const positionRanking = cells[14];
+             const positionRanking = cells[18];
             if (positionRanking) {
                 const positionRankingCell = parseInt(positionRanking.textContent);
                 if (positionRankingCell <= 5) {
@@ -96,10 +96,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     rspPositionRanking.classList.add('top-ten');
                 } else if (rspPositionRankingCell >= 11 && rspPositionRankingCell <= 20) {
                     rspPositionRanking.classList.add('positive');
-                }
+                } else if (rspPositionRankingCell >= 21 && rspPositionRankingCell <= 30) {
+                    rspPositionRanking.classList.add('neutral');
+                } else if (rspPositionRankingCell >= 31 && rspPositionRankingCell <= 50) {
+                        rspPositionRanking.classList.add('negative');
+            }
+            const rpPositionRanking = cells[7];
+            if (rpPositionRanking) {
+                const rpPositionRankingCell = parseInt(rpPositionRanking.textContent);
+                if (rpPositionRankingCell <= 5) {
+                    rpPositionRanking.classList.add('top-five');
+                } else if (rpPositionRankingCell >= 6 && rpPositionRankingCell <= 10) {
+                    rpPositionRanking.classList.add('top-ten');
+                } else if (rpPositionRankingCell >= 11 && rpPositionRankingCell <= 20) {
+                    rpPositionRanking.classList.add('positive');
+                } else if (rpPositionRankingCell >= 21 && rpPositionRankingCell <= 30) {
+                    rpPositionRanking.classList.add('neutral');
+                } else if (rpPositionRankingCell >= 31 && rpPositionRankingCell <= 50) {
+                    rpPositionRanking.classList.add('negative');
             }
 
-            const value = cells[16];
+            const value = cells[19];
             if (value) {
                 const valueCell = parseInt(value.textContent);
                 if(valueCell >= 7000) {
@@ -130,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
 
-            const depthOfTalent = cells[9];
+            const depthOfTalent = cells[10];
             if (depthOfTalent) {
                 const dOTCell = parseInt(depthOfTalent.textContent);
                 if(dOTCell >= 95) {
@@ -147,9 +164,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     depthOfTalent.classList.add('reserve');
                 }
             }
-        
+        } 
     }
 }
-
+    }
     addFormatting();
 });

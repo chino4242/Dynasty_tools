@@ -60,7 +60,8 @@ table {
   }
 
   .top-five {
-    background-color: gold;
+    background-color: rgb(117, 21, 155);
+    color: white;
     font-weight: bold;
   }
 
@@ -105,11 +106,15 @@ table {
   }
 
 .rare {
-  background-color: gold;
+  background-color: rgb(117, 21, 155);
+  color: white;
+  font-weight: bold;
 }
 
 .franchise {
-  background-color: gold;
+  background-color: rgb(117, 21, 155);
+  color: white;
+  font-weight: bold;
 }
 
 .starter {
