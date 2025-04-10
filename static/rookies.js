@@ -100,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     rspPositionRanking.classList.add('neutral');
                 } else if (rspPositionRankingCell >= 31 && rspPositionRankingCell <= 50) {
                         rspPositionRanking.classList.add('negative');
-            }
+                } 
+        }
             const rpPositionRanking = cells[7];
             if (rpPositionRanking) {
                 const rpPositionRankingCell = parseInt(rpPositionRanking.textContent);
@@ -114,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     rpPositionRanking.classList.add('neutral');
                 } else if (rpPositionRankingCell >= 31 && rpPositionRankingCell <= 50) {
                     rpPositionRanking.classList.add('negative');
-            }
+                } 
+            
 
             const value = cells[19];
             if (value) {
@@ -166,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } 
     }
-}
+
     }
     addFormatting();
 });

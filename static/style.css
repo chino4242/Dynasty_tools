@@ -55,6 +55,10 @@ table {
       background-color: lightyellow;
   }
 
+  .very-negative {
+    background-color: red;
+  }
+
   .highlight {
     font-weight: bold;
   }
