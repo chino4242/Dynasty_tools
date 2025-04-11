@@ -131,6 +131,52 @@ document.addEventListener('DOMContentLoaded', function() {
                     value.classList.add('neutral');
                 }
             }
+            const manPercentile = cells[28];
+            if (manPercentile) {
+                const manPercentileCell = parseInt(manPercentile.textContent);
+                if(manPercentileCell >= 90) {
+                    manPercentile.classList.add('top-five');
+                } else if (manPercentileCell >= 80 && manPercentileCell <=89){
+                    manPercentile.classList.add('elite');
+                } else if (manPercentileCell >= 60 && manPercentileCell <=79) {
+                    manPercentile.classList.add('positive');
+                } else if (manPercentileCell >= 50 && manPercentileCell <=59) {
+                    manPercentile.classList.add('neutral');
+                } else if (manPercentileCell <= 49) {
+                    manPercentile.classList.add('negative')
+                }
+            }
+            const zonePercentile = cells[31];
+            if (zonePercentile) {
+                const zonePercentileCell = parseInt(zonePercentile.textContent);
+                if(zonePercentileCell >= 90) {
+                    zonePercentile.classList.add('top-five');
+                } else if (zonePercentileCell >= 80 && zonePercentileCell <=89){
+                    zonePercentile.classList.add('elite');
+                } else if (zonePercentileCell >= 60 && zonePercentileCell <=79) {
+                    zonePercentile.classList.add('positive');
+                } else if (zonePercentileCell >= 50 && zonePercentileCell <=59) {
+                    zonePercentile.classList.add('neutral');
+                } else if (zonePercentileCell <= 49) {
+                    zonePercentile.classList.add('negative')
+                }
+                
+            }
+            const pressPercentile = cells[34];
+            if (pressPercentile) {
+                const pressPercentileCell = parseInt(pressPercentile.textContent);
+                if(pressPercentileCell >= 90) {
+                    pressPercentile.classList.add('top-five');
+                } else if (pressPercentileCell >= 80 && pressPercentileCell <=89){
+                    pressPercentile.classList.add('elite');
+                } else if (pressPercentileCell >= 60 && pressPercentileCell <=79) {
+                    pressPercentile.classList.add('positive');
+                } else if (pressPercentileCell >= 50 && pressPercentileCell <=59) {
+                    pressPercentile.classList.add('neutral');
+                } else if (pressPercentileCell <= 49) {
+                    pressPercentile.classList.add('negative')
+                }
+            }
 
             const playerName = cells[2];
             const position = cells[3];

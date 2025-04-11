@@ -71,19 +71,26 @@ def create_dynasty_dfs():
     merged_dynasty = pd.merge(merged_dynasty, reception_perception, on='player_cleansed_name', how='outer')
     return merged_dynasty
 
-def create_rookie_rankings():
-    current_dir = os.path.dirname(__file__)
-    relative_path = os.path.join(current_dir, 'data', '1QB_Predraft_Rookies.xlsx')
+def create_rookie_rankings(format):
+    
+    if format == "superflex":
+        dir = "superflex"
+    else:
+        dir = "1QB"
+    common = "common"
+    
+    target_dir = os.path.join(os.path.dirname(__file__), 'data')
+    relative_path = os.path.join(target_dir, dir, 'Predraft_Rookies.xlsx')
     prospect_guide = pd.read_excel(relative_path)
     prospect_guide = cleanse_names(prospect_guide, 'Player')
-    relative_path = os.path.join(current_dir, 'data', 'fantasycalc_dynasty_rookie_rankings.csv')
+    relative_path = os.path.join(target_dir, dir, 'fantasycalc_dynasty_rookie_rankings.csv')
     fantasy_calc = pd.read_csv(relative_path, delimiter=';')
     fantasy_calc = cleanse_names(fantasy_calc, 'name')
-    relative_path = os.path.join(current_dir, 'data', 'Reception_Perception_Rookies.xlsx')
+    relative_path = os.path.join(target_dir, common, 'Reception_Perception_Rookies.xlsx')
     reception_perception = pd.read_excel(relative_path)
     reception_perception = cleanse_names(reception_perception, 'Player')
     merged_rookies = pd.merge(prospect_guide, reception_perception, on='player_cleansed_name', how='outer')
-    relative_path = os.path.join(current_dir, 'data', 'RSP_Rookies.xlsx')
+    relative_path = os.path.join(target_dir, common, 'RSP_Rookies.xlsx')
     rsp_rookies = pd.read_excel(relative_path)
     rsp_rookies = cleanse_names(rsp_rookies, 'Player')
     merged_rookies = pd.merge(merged_rookies, rsp_rookies, on='player_cleansed_name', how='outer')

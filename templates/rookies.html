@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" type="text/" href="static/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>   
 </head>
 <body>
     <div class="container">
@@ -33,12 +36,13 @@
     $(document).ready(function() { 
         $('#rookieTable').DataTable({
             pageLength: 50,
+            fixedHeader: true,
            "columns": [
             null,                  // 0 Checkbox
             { "type": "num" },    //1 Rk
             null,    // 2 Player_Cleansed_Name
-            null,                  // Position
-            { "type": "num" },                  // JJ Position Rank
+            null,                  // 3 Position
+            { "type": "num" },                  // 4 JJ Position Rank
             { "type": "num" },    // 5 Rsp Position Rank
             { "type": "num" },    // 6 RSP 2023-2025 Rank
             { "type": "num" }, //7 RP 2021-2025 Rank
