@@ -79,17 +79,26 @@ def create_rookie_rankings(format):
         dir = "1QB"
     common = "common"
     
+    """Gets postdraft data from LRQB"""
     target_dir = os.path.join(os.path.dirname(__file__), 'data')
-    relative_path = os.path.join(target_dir, dir, 'Predraft_Rookies.xlsx')
-    prospect_guide = pd.read_excel(relative_path)
-    prospect_guide = cleanse_names(prospect_guide, 'Player')
+    relative_path = os.path.join(target_dir, common, 'Postdraft_Rookies.xlsx')
+    postdraft_rookies = pd.read_excel(relative_path)
+    postdraft_rookies = cleanse_names(postdraft_rookies, 'Player')
+    """Adds rankings dependent on scoring format"""
+    relative_path = os.path.join(target_dir, dir, 'Postdraft_Rookies.xlsx')
+    postdraft_rookies_rank = pd.read_excel(relative_path)
+    postdraft_rookies_rank = cleanse_names(postdraft_rookies_rank, 'Player')
+    """Gets fantasycalc data"""    
     relative_path = os.path.join(target_dir, dir, 'fantasycalc_dynasty_rookie_rankings.csv')
     fantasy_calc = pd.read_csv(relative_path, delimiter=';')
     fantasy_calc = cleanse_names(fantasy_calc, 'name')
+    """Gets reception perception data"""
     relative_path = os.path.join(target_dir, common, 'Reception_Perception_Rookies.xlsx')
     reception_perception = pd.read_excel(relative_path)
     reception_perception = cleanse_names(reception_perception, 'Player')
-    merged_rookies = pd.merge(prospect_guide, reception_perception, on='player_cleansed_name', how='outer')
+    """Merge dataframes"""
+    merged_rookies = pd.merge(postdraft_rookies, postdraft_rookies_rank, on='player_cleansed_name', how='outer')
+    merged_rookies = pd.merge(merged_rookies, reception_perception, on='player_cleansed_name', how='outer')
     relative_path = os.path.join(target_dir, common, 'RSP_Rookies.xlsx')
     rsp_rookies = pd.read_excel(relative_path)
     rsp_rookies = cleanse_names(rsp_rookies, 'Player')
