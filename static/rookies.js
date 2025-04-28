@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cells = rows[i].getElementsByTagName('td');
             
             // Format for producer group
-            const categoryCell = cells[11]; // assuming the producer group is in the 7th column (index 6)
+            const categoryCell = cells[12]; // assuming the producer group is in the 7th column (index 6)
             if (categoryCell.textContent.trim().toLowerCase() === "elite producer") {
                 categoryCell.classList.add('elite');
             } else if (categoryCell.textContent.trim().toLowerCase() === "weekly starter"){
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryCell.classList.add('negative');
             }
             
-             const positionRanking = cells[18];
+             const positionRanking = cells[20];
             if (positionRanking) {
                 const positionRankingCell = parseInt(positionRanking.textContent);
                 if (positionRankingCell <= 5) {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
-            const rspPositionRanking = cells[6];
+            const rspPositionRanking = cells[7];
             if (rspPositionRanking) {
                 const rspPositionRankingCell = parseInt(rspPositionRanking.textContent);
                 if (rspPositionRankingCell <= 5) {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         rspPositionRanking.classList.add('negative');
                 } 
         }
-            const rpPositionRanking = cells[7];
+            const rpPositionRanking = cells[8];
             if (rpPositionRanking) {
                 const rpPositionRankingCell = parseInt(rpPositionRanking.textContent);
                 if (rpPositionRankingCell <= 5) {
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } 
             
 
-            const value = cells[19];
+            const value = cells[21];
             if (value) {
                 const valueCell = parseInt(value.textContent);
                 if(valueCell >= 7000) {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     value.classList.add('neutral');
                 }
             }
-            const manPercentile = cells[28];
+            const manPercentile = cells[30];
             if (manPercentile) {
                 const manPercentileCell = parseInt(manPercentile.textContent);
                 if(manPercentileCell >= 90) {
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     manPercentile.classList.add('negative')
                 }
             }
-            const zonePercentile = cells[31];
+            const zonePercentile = cells[33];
             if (zonePercentile) {
                 const zonePercentileCell = parseInt(zonePercentile.textContent);
                 if(zonePercentileCell >= 90) {
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
             }
-            const pressPercentile = cells[34];
+            const pressPercentile = cells[36];
             if (pressPercentile) {
                 const pressPercentileCell = parseInt(pressPercentile.textContent);
                 if(pressPercentileCell >= 90) {
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
 
-            const depthOfTalent = cells[10];
+            const depthOfTalent = cells[11];
             if (depthOfTalent) {
                 const dOTCell = parseInt(depthOfTalent.textContent);
                 if(dOTCell >= 95) {

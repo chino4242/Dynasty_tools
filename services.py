@@ -107,6 +107,7 @@ def create_rookie_rankings(format):
     columns = ['Rk',
                'player_cleansed_name',
                'position',
+               'NFL Team',
                'Pos. Rank',
                'RSP Pos. Ranking',
                'RSP 2023-2025 Rank',
@@ -116,6 +117,7 @@ def create_rookie_rankings(format):
                'Depth of Talent Score',
                'Category',
                'Depth of Talent Description',
+               'Draft Capital Delta',
                'RP Definition',
                'RP Quick Note',
                'Comparables',
@@ -143,6 +145,7 @@ def create_rookie_rankings(format):
                 'trend30day',
     ]
     merged_rookies = merged_rookies[columns]
+    merged_rookies = merged_rookies.sort_values(by='Rk', ascending=True)
     return merged_rookies
 
 def print_by_team(teams, frame):
